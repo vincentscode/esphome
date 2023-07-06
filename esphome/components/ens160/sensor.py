@@ -6,8 +6,9 @@ from esphome.const import (
     ICON_CHEMICAL_WEAPON,
     ICON_RADIATOR,
     DEVICE_CLASS_CARBON_DIOXIDE,
-    DEVICE_CLASS_VOLATILE_ORGANIC_COMPOUNDS,
+    DEVICE_CLASS_VOLATILE_ORGANIC_COMPOUNDS_PARTS,
     STATE_CLASS_MEASUREMENT,
+    UNIT_EMPTY,
     UNIT_PARTS_PER_MILLION,
     UNIT_PARTS_PER_BILLION,
     CONF_ECO2,
@@ -28,7 +29,6 @@ ENS160Component = ens160_ns.class_(
 
 CONF_COMPENSATION = "compensation"
 CONF_AQI = "aqi"
-UNIT_INDEX = "index"
 
 CONFIG_SCHEMA = (
     cv.Schema(
@@ -45,11 +45,11 @@ CONFIG_SCHEMA = (
                 unit_of_measurement=UNIT_PARTS_PER_BILLION,
                 icon=ICON_RADIATOR,
                 accuracy_decimals=0,
-                device_class=DEVICE_CLASS_VOLATILE_ORGANIC_COMPOUNDS,
+                device_class=DEVICE_CLASS_VOLATILE_ORGANIC_COMPOUNDS_PARTS,
                 state_class=STATE_CLASS_MEASUREMENT,
             ),
             cv.Required(CONF_AQI): sensor.sensor_schema(
-                unit_of_measurement=UNIT_INDEX,
+                unit_of_measurement=UNIT_EMPTY,
                 icon=ICON_CHEMICAL_WEAPON,
                 accuracy_decimals=0,
                 device_class=DEVICE_CLASS_AQI,
